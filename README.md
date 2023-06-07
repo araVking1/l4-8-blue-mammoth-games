@@ -1,2 +1,2 @@
-# l4-8-blue-mammoth-games
+# Blue Mammoth Games
  
