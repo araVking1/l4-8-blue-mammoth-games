@@ -14,7 +14,7 @@ public class ScoreSystem : MonoBehaviour
         score = (int)Time.time;
         scoreText.text = score.ToString();
 
-        if (score >= 5)
+        if (score >= 100)
         {
             SceneManager.LoadScene(sceneToLoad);
         }
