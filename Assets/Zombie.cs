@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Zombie : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class Zombie : MonoBehaviour
         {
             // Set the "Walk" animation parameter to false if no target is assigned
             animator.SetBool("Walk", false);
+        }
+        if ((target.position - this.transform.position).magnitude <= 1.2)
+        {
+            target.position = new Vector3(14.097f, target.position.y, 10.275f);
+            SceneManager.LoadScene("DemoScene");
         }
     }
 
