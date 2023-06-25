@@ -28,8 +28,6 @@ public class Zombie : MonoBehaviour
             // Set the destination for the NavMeshAgent
             agent.SetDestination(target.position);
 
-            // Set the "Walk" animation parameter to true
-            animator.SetBool("Walk", true);
         }
         else
         {
