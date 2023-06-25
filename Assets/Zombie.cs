@@ -22,22 +22,22 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
-        // Check if a target is assigned
-        if (target != null)
+        // Check if a target is assigned and the agent is not null
+        if (target != null && agent != null)
         {
             // Set the destination for the NavMeshAgent
             agent.SetDestination(target.position);
-
         }
         else
         {
             // Set the "Walk" animation parameter to false if no target is assigned
             animator.SetBool("Walk", false);
         }
-        if ((target.position - this.transform.position).magnitude <= 1.2)
+
+        if ((target.position - transform.position).magnitude <= 1.2)
         {
             target.position = new Vector3(14.097f, target.position.y, 10.275f);
-            SceneManager.LoadScene("DemoScene");
+            SceneManager.LoadScene("level");
         }
     }
 
@@ -58,6 +58,13 @@ public class Zombie : MonoBehaviour
         agent.enabled = false;
         animator.enabled = false;
 
+        // Store the current agent speed and angular speed
+        float speed = agent.speed;
+        float angularSpeed = agent.angularSpeed;
+
+        // Remove the NavMeshAgent component
+        Destroy(agent);
+
         // Wait for some time before respawning the zombie
         yield return new WaitForSeconds(5f);
 
@@ -66,6 +73,13 @@ public class Zombie : MonoBehaviour
 
         // Reset the shots taken count
         shotsTaken = 0;
+
+        // Add the NavMeshAgent component back
+        agent = gameObject.AddComponent<NavMeshAgent>();
+
+        // Restore the agent speed and angular speed
+        agent.speed = speed;
+        agent.angularSpeed = angularSpeed;
 
         // Enable the zombie back
         agent.enabled = true;
