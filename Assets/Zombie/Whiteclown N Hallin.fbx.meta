@@ -3,7 +3,12 @@ guid: 95527924f78d7364e96afd6aaaf3c393
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteClown_material
+    second: {fileID: 2100000, guid: eb7edf184f2c0374daa411be8d05f78a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
