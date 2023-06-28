@@ -64,7 +64,12 @@ public class SimpleShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
-        
+        // Check if the bullet hits the zombie
+        if (zombie != null)
+        {
+            // Call the TakeShot method on the zombie
+            zombie.TakeShot();
+        }
     }
 
     // This function creates a casing at the ejection slot
